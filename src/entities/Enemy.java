@@ -1,7 +1,6 @@
 package entities;
 
 
-import utilz.Constants;
 import utilz.Constants.Game;
 
 import java.awt.geom.Rectangle2D;
@@ -32,7 +31,7 @@ public abstract class Enemy extends Entity {
 	}
 
 	protected void firstUpdateCheck(int[][] lvlData) {
-		if (!EntityOnFloor(hitbox, lvlData);) {
+		if (!IsEntityOnFloor(hitbox, lvlData)) {
 			inAir = true;
 		}
 		firstUpdate = false;

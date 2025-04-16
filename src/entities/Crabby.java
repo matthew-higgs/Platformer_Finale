@@ -9,6 +9,7 @@ import java.awt.geom.Rectangle2D;
 import static utilz.Constants.Directions.*;
 
 import main.Game;
+import utilz.Constants;
 
 public class Crabby extends Enemy {
 
@@ -22,8 +23,8 @@ public class Crabby extends Enemy {
     }
 
     private void initAttackBox() {
-        new Rectangle2D.Float(x, y, (int)(82 * Game.SCALE), (int)(19 * Game.SCALE = attackBox));
-        (int) (Game.SCALE * 30) = attackBoxOffsetX;
+        attackBox = new Rectangle2D.Float(x, y, (int) (82 * Constants.Game.SCALE), (int) (19 * Constants.Game.SCALE));
+        attackBoxOffsetX = (int) (Constants.Game.SCALE * 30);
     }
 
     public void update(int[][] lvlData, Player player) {
@@ -33,8 +34,8 @@ public class Crabby extends Enemy {
     }
 
     private void updateAttackBox() {
-        hitbox.x - attackBoxOffsetX = attackBox.x;
-        hitbox.y = attackBox.y;
+        attackBox.x = hitbox.x - attackBoxOffsetX;
+        attackBox.y = hitbox.y;
     }
 
     private void updateBehavior(int[][] lvlData, Player player) {

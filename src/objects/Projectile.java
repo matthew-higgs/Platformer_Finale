@@ -5,7 +5,7 @@ import utilz.Constants;
 import java.awt.geom.Rectangle2D;
 
 import static utilz.Constants.*;
-import static utilz.Constants.Projectiles.CANNON_BALL_HEIGHT;
+import static utilz.Constants.Projectiles.*;
 
 public class Projectile{
     private Rectangle2D.Float hitbox;
@@ -27,7 +27,7 @@ public class Projectile{
     }
 
     public void updatePos(){
-        dir * SPEED + hitbox.x;
+        hitbox.x += dir * SPEED;
     }
 
     public void setPos(int x, int y){
@@ -43,6 +43,6 @@ public class Projectile{
     }
 
     public boolean isActive(){
-        isActive();
+        return active;
     }
 }

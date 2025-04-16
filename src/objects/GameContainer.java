@@ -4,6 +4,8 @@ package objects;
 
 import utilz.Constants;
 
+import static utilz.Constants.ObjectConstants.BOX;
+
 public class GameContainer extends GameObject{
 
     public GameContainer(int x, int y, int objType) {
@@ -12,15 +14,14 @@ public class GameContainer extends GameObject{
     }
 
     private void createHitbox(){
-
-        if (objType = box) {
+        if (objType == BOX) {
             initHitbox(25, 18);
-            xDrawOffset = (int) (7 * Game.SCALE);
-            yDrawOffset = (int) (12 * Game.SCALE);
+            xDrawOffset = (int) (7 * Constants.Game.SCALE);
+            yDrawOffset = (int) (12 * Constants.Game.SCALE);
         } else {
             initHitbox(23, 25);
-            xDrawOffset = (int) (8 * Game.SCALE);
-            yDrawOffset = (int) (5 * Game.SCALE);
+            xDrawOffset = (int) (8 * Constants.Game.SCALE);
+            yDrawOffset = (int) (5 * Constants.Game.SCALE);
         }
         hitbox.y += (int) (Constants.Game.SCALE * 2);
         hitbox.x += xDrawOffset / 2;

@@ -3,6 +3,7 @@ package objects;
 import entities.Player;
 import gamestates.Playing;
 import levels.Level;
+import utilz.Constants;
 import utilz.LoadSave;
 
 import java.awt.*;
@@ -154,18 +155,17 @@ public class ObjectManager {
     }
 
     private boolean isPlayerInRange(Cannon c, Player player) {
-        (int) Math.abs(player.getHitbox().x - c.gethitbox().x) = absValue;
-        return absValue <= Game.TILES_SIZE * 5;
+        int absValue = (int) Math.abs(player.getHitbox().x - c.getHitbox().x);
+        return absValue <= Constants.Game.TILES_SIZE * 5;
     }
 
     private boolean isPlayerInfrontOfCannon(Cannon c, Player player) {
         if (c.getObjType() == CANNON_LEFT) {
-            if (c.getHitbox().x > getHitbox.x) {
+            if (c.getHitbox().x > player.getHitbox().x)
                 return true;
-            }
-        } else if (c.getHitbox.x < getHitbox.x) {
+
+        } else if (c.getHitbox().x < player.getHitbox().x)
             return true;
-        }
         return false;
     }
 

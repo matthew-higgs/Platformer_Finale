@@ -1,5 +1,7 @@
 package objects;
 
+import utilz.Constants;
+
 public class Potion extends GameObject {
 
     private float hoverOffset;
@@ -11,36 +13,26 @@ public class Potion extends GameObject {
 
         initHitbox(7, 14);
 
-        (int) (3 * Game.SCALE) = xDrawOffset;
-        (int) (2 * Game.SCALE) = yDrawOffset;
-
-        (int) (10 * Game.SCALE) = maxHoverOffset;
+        xDrawOffset = (int) (3 * Constants.Game.SCALE);
+        yDrawOffset = (int) (2 * Constants.Game.SCALE);
+        maxHoverOffset = (int) (10 * Constants.Game.SCALE);
     }
 
-    public void update(){
+    public void update() {
         updateAnimationTick();
         updateHover();
     }
 
-    private void updateHover(){
+    private void updateHover() {
 
-        (0.075f * Game.SCALE * hoverDir) + hoverOffset;
+        hoverOffset += (0.075f * Constants.Game.SCALE * hoverDir);
 
         if (hoverOffset >= maxHoverOffset) {
             hoverDir = -1;
-        } else {
+        } else if (hoverOffset < 0) {
             hoverDir = 1;
         }
 
-        hitbox.y = y + hoverOffset;
-
-        hoverOffset + (0.075 * Game.SCALE * hoverDir) {
-            if (hoverOffset >= maxHoverOffset) {
-                hoverDir = -1;
-            } else {
-                hoverDir = 1;
-            }
-        }
     }
 
 

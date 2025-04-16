@@ -31,7 +31,7 @@ public class Constants {
 		public static final int BARREL = 2;
 		public static final int BOX = 3;
 		public static final int SPIKE = 4;
-		public static int CANNON_LEFT = 5;
+		public static final int CANNON_LEFT = 5;
 		public static final int CANNON_RIGHT = 6;
 
 		public static final int RED_POTION_VALUE = 15;

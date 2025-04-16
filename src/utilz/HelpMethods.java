@@ -95,11 +95,10 @@ public class HelpMethods {
     }
 
     public static boolean IsEntityOnFloor(Rectangle2D.Float hitbox, int[][] lvlData) {
-        if (xSpeed > 0) {
-            return IsSolid(hitbox.x + hitbox.width + xSpeed, hitbox.y + hitbox.height + 1, lvlData);
-        } else {
-            return IsSolid(hitbox.x + xSpeed, hitbox.y + hitbox.height + 1, lvlData);
-        }
+        if (!IsSolid(hitbox.x, hitbox.y + hitbox.height + 1, lvlData))
+            if (!IsSolid(hitbox.x + hitbox.width, hitbox.y + hitbox.height + 1, lvlData))
+                return false;
+        return true;
     }
 
     public static boolean IsFloor(Rectangle2D.Float hitbox, float xSpeed, int[][] lvlData) {
