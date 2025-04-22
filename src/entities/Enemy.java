@@ -121,8 +121,8 @@ public abstract class Enemy extends Entity {
 				aniIndex = 0;
 
 				switch (state) {
-					case ATTACK, HIT -> state = IDLE;
-					case DEAD -> active = false;
+				case ATTACK, HIT -> state = IDLE;
+				case DEAD -> active = false;
 				}
 			}
 		}

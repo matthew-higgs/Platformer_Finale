@@ -108,7 +108,7 @@ public class Level {
 	public ArrayList<Spike> getSpikes() {
 		return spikes;
 	}
-
+	
 	public ArrayList<Cannon> getCannons(){
 		return cannons;
 	}
