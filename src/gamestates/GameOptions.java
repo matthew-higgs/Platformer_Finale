@@ -1,18 +1,17 @@
 package gamestates;
 
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+
 import main.Game;
 import ui.AudioOptions;
 import ui.PauseButton;
 import ui.UrmButton;
 import utilz.Constants;
 import utilz.LoadSave;
-
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-
-import static utilz.Constants.UI.URMButtons.URM_SIZE;
+import static utilz.Constants.UI.URMButtons.*;
 
 public class GameOptions extends State implements Statemethods {
 
@@ -29,7 +28,7 @@ public class GameOptions extends State implements Statemethods {
 	}
 
 	private void loadButton() {
-		int menuX = (int)(387 * Constants.Game.SCALE);
+		int menuX = (int) (387 * Constants.Game.SCALE);
 		int menuY = (int) (325 * Constants.Game.SCALE);
 
 		menuB = new UrmButton(menuX, menuY, URM_SIZE, URM_SIZE, 2);
@@ -49,6 +48,7 @@ public class GameOptions extends State implements Statemethods {
 	public void update() {
 		menuB.update();
 		audioOptions.update();
+
 	}
 
 	@Override
@@ -58,6 +58,7 @@ public class GameOptions extends State implements Statemethods {
 
 		menuB.draw(g);
 		audioOptions.draw(g);
+
 	}
 
 	public void mouseDragged(MouseEvent e) {
@@ -68,48 +69,51 @@ public class GameOptions extends State implements Statemethods {
 	public void mousePressed(MouseEvent e) {
 		if (isIn(e, menuB)) {
 			menuB.setMousePressed(true);
-		} else {
+		} else
 			audioOptions.mousePressed(e);
-		}
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		if (isIn(e, menuB)) {
-			if (menuB.isMousePressed()) {
+			if (menuB.isMousePressed())
 				Gamestate.state = Gamestate.MENU;
-			}
-		} else {
+		} else
 			audioOptions.mouseReleased(e);
-		}
+
 		menuB.resetBools();
+
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		menuB.setMouseOver(false);
-		if (isIn(e, menuB)) {
+
+		if (isIn(e, menuB))
 			menuB.setMouseOver(true);
-		} else {
+		else
 			audioOptions.mouseMoved(e);
-		}
+
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
 			Gamestate.state = Gamestate.MENU;
-		}
+
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO: nothing in this method.  It must exist, but it does nothing
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO: nothing in this method.  It must exist, but it does nothing
+		// TODO Auto-generated method stub
+
 	}
 
 	private boolean isIn(MouseEvent e, PauseButton b) {

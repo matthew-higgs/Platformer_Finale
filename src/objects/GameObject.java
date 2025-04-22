@@ -1,12 +1,14 @@
 package objects;
 
-import utilz.Constants;
-
-import java.awt.*;
-import java.awt.geom.Rectangle2D;
-
 import static utilz.Constants.ANI_SPEED;
 import static utilz.Constants.ObjectConstants.*;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.geom.Rectangle2D;
+
+import main.Game;
+import utilz.Constants;
 
 public class GameObject {
 
@@ -22,77 +24,76 @@ public class GameObject {
         this.objType = objType;
     }
 
-    protected void updateAnimationTick(){
-        ++aniTick;
+    protected void updateAnimationTick() {
+        aniTick++;
         if (aniTick >= ANI_SPEED) {
             aniTick = 0;
-            ++aniTick;
+            aniIndex++;
             if (aniIndex >= GetSpriteAmount(objType)) {
                 aniIndex = 0;
                 if (objType == BARREL || objType == BOX) {
                     doAnimation = false;
                     active = false;
-                }
+                } else if (objType == CANNON_LEFT || objType == CANNON_RIGHT)
+                    doAnimation = false;
             }
-        } else if (objType == CANNON_LEFT || objType == CANNON_RIGHT) {
-            doAnimation = false;
         }
     }
 
-    public void reset(){
+    public void reset() {
         aniIndex = 0;
         aniTick = 0;
         active = true;
 
-        if (objType == BARREL || objType == BOX || objType == CANNON_LEFT || objType == CANNON_RIGHT) {
+        if (objType == BARREL || objType == BOX || objType == CANNON_LEFT || objType == CANNON_RIGHT)
             doAnimation = false;
-        } else {
+        else
             doAnimation = true;
-        }
     }
 
-    protected void initHitbox(int width, int height){
+    protected void initHitbox(int width, int height) {
         hitbox = new Rectangle2D.Float(x, y, (int) (width * Constants.Game.SCALE), (int) (height * Constants.Game.SCALE));
     }
 
-    public void drawHitbox(Graphics g, int xLvlOffset){
+    public void drawHitbox(Graphics g, int xLvlOffset) {
         g.setColor(Color.PINK);
         g.drawRect((int) hitbox.x - xLvlOffset, (int) hitbox.y, (int) hitbox.width, (int) hitbox.height);
     }
 
-    public int getObjType(){
+    public int getObjType() {
         return objType;
     }
 
-    public Rectangle2D.Float getHitbox(){
+    public Rectangle2D.Float getHitbox() {
         return hitbox;
     }
 
-    public boolean isActive(){
+    public boolean isActive() {
         return active;
     }
 
-    public void setActive(boolean active){
+    public void setActive(boolean active) {
         this.active = active;
     }
 
-    public void setAnimation(boolean doAnimation){
+    public void setAnimation(boolean doAnimation) {
         this.doAnimation = doAnimation;
     }
 
-    public int getxDrawOffset(){
+    public int getxDrawOffset() {
         return xDrawOffset;
     }
 
-    public int getyDrawOffset(){
+    public int getyDrawOffset() {
         return yDrawOffset;
     }
 
-    public int getAniIndex(){
+    public int getAniIndex() {
         return aniIndex;
     }
 
-    public int getAniTick(){
+    public int getAniTick() {
         return aniTick;
     }
+
 }

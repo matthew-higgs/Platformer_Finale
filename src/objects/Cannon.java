@@ -1,5 +1,6 @@
 package objects;
 
+import main.Game;
 import utilz.Constants;
 
 public class Cannon extends GameObject {
@@ -14,13 +15,13 @@ public class Cannon extends GameObject {
         hitbox.y += (int) (6 * Constants.Game.SCALE);
     }
 
-    public void update(){
-        if (doAnimation = true) {
+    public void update() {
+        if (doAnimation)
             updateAnimationTick();
-        }
     }
 
     public int getTileY() {
         return tileY;
     }
+
 }

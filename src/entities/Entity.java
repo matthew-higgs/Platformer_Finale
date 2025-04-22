@@ -1,9 +1,11 @@
 package entities;
 
-import utilz.Constants;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
+
+import main.Game;
+import utilz.Constants;
 
 public abstract class Entity {
 
@@ -32,6 +34,7 @@ public abstract class Entity {
 	}
 
 	protected void drawHitbox(Graphics g, int xLvlOffset) {
+		// For debugging the hitbox
 		g.setColor(Color.PINK);
 		g.drawRect((int) hitbox.x - xLvlOffset, (int) hitbox.y, (int) hitbox.width, (int) hitbox.height);
 	}
